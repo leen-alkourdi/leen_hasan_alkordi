@@ -1,0 +1,1401 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    min-height: 100vh;
+    background-image: url(صورة.jpeg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    color: #fff;
+    overflow-x: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+.header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg,
+            #FF6B35,
+            #27AE60,
+            #FFD700,
+            #E84393,
+            #FF6B35);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: inline-block;
+    animation: gradientMove 8s linear infinite;
+    background-size: 400% 100%;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 400% 50%;
+    }
+}
+
+.header h1::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 4px;
+    background: linear-gradient(90deg,
+            #FF6B35,
+            #27AE60,
+            #FFD700,
+            #E84393);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.header p {
+    font-size: 1.3rem;
+    color: #333;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    background: linear-gradient(135deg,
+            rgba(255, 215, 0, 0.9),
+            rgba(255, 107, 53, 0.9));
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.converter-box {
+    background: linear-gradient(135deg,
+            rgba(255, 107, 53, 0.2),
+            rgba(39, 174, 96, 0.2),
+            rgba(255, 215, 0, 0.2));
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 35px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 20px 40px rgba(39, 174, 96, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.converter-box::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle,
+            rgba(255, 107, 53, 0.3) 0%,
+            rgba(232, 67, 147, 0.2) 50%,
+            transparent 70%);
+    transform: rotate(30deg);
+    z-index: -1;
+}
+
+.converter-box:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 30px 60px rgba(232, 67, 147, 0.4),
+        0 0 30px rgba(255, 215, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    border-color: rgba(232, 67, 147, 0.7);
+}
+
+.box-title {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.box-title h2 {
+    font-size: 2.5rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.box-title h2 i {
+    font-size: 2.8rem;
+    background: linear-gradient(45deg, #FF6B35, #27AE60);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: iconPulse 2s infinite;
+}
+
+@keyframes iconPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.currency-input {
+    margin-bottom: 25px;
+}
+
+.currency-input label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    color: #444;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 20px 25px;
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 107, 53, 0.5);
+    border-radius: 15px;
+    color: #333;
+    outline: none;
+    transition: all 0.3s;
+    font-family: 'Cairo', sans-serif;
+    text-align: right;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-group input:focus {
+    border-color: #E84393;
+    box-shadow: 0 0 20px rgba(232, 67, 147, 0.5),
+        inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 1);
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 25px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #FF6B35, #FFD700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.direction-selector {
+    display: flex;
+    justify-content: center;
+    margin: 35px 0;
+    position: relative;
+    gap: 15px;
+}
+
+.direction-btn {
+    padding: 18px 35px;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg,
+            rgba(255, 215, 0, 0.7),
+            rgba(39, 174, 96, 0.7));
+    border: 2px solid rgba(255, 215, 0, 0.8);
+    color: #333;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-weight: 700;
+    flex: 1;
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.2);
+}
+
+.direction-btn.active {
+    background: linear-gradient(135deg,
+            #FF6B35,
+            #E84393);
+    color: white;
+    border-color: white;
+    box-shadow: 0 10px 20px rgba(232, 67, 147, 0.4);
+    transform: translateY(-2px);
+}
+
+.direction-btn:hover:not(.active) {
+    background: linear-gradient(135deg,
+            rgba(232, 67, 147, 0.7),
+            rgba(255, 107, 53, 0.7));
+    border-color: white;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+}
+
+.convert-btn {
+    width: 100%;
+    padding: 22px;
+    font-size: 1.6rem;
+    background: linear-gradient(45deg,
+            #FF6B35,
+            #27AE60,
+            #FFD700,
+            #E84393);
+    background-size: 400% 400%;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.4s;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Cairo', sans-serif;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    animation: gradientAnimation 8s ease infinite;
+    box-shadow: 0 10px 20px rgba(232, 67, 147, 0.4);
+}
+
+@keyframes gradientAnimation {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.convert-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(232, 67, 147, 0.6);
+    animation: gradientAnimation 4s ease infinite;
+}
+
+.convert-btn:active {
+    transform: translateY(-2px);
+}
+
+.convert-btn::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, 0.3) 10%,
+            transparent 70%);
+    transform: scale(0);
+    transition: transform 0.5s ease;
+    border-radius: 50%;
+}
+
+.convert-btn:active::after {
+    transform: scale(1);
+}
+
+/* قسم توزيع العملة القديم - إزالة */
+.currency-breakdown {
+    display: none !important;
+}
+
+/* ========== قسم توزيع العملات المنفصل الجديد ========== */
+.breakdown-container {
+    background: linear-gradient(135deg,
+            rgba(255, 215, 0, 0.15),
+            rgba(39, 174, 96, 0.15),
+            rgba(232, 67, 147, 0.1));
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 30px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 40px;
+    border: 3px solid rgba(255, 215, 0, 0.4);
+    box-shadow: 0 20px 50px rgba(39, 174, 96, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    display: none;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.breakdown-container.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: slideInUp 0.8s ease;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* تأثير خلفي */
+.breakdown-container::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle,
+            rgba(255, 215, 0, 0.1) 0%,
+            rgba(232, 67, 147, 0.05) 50%,
+            transparent 70%);
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+/* الهيدر */
+.breakdown-header {
+    text-align: center;
+    margin-bottom: 35px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.breakdown-header h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
+}
+
+.breakdown-header h2 i {
+    color: #FFD700;
+    font-size: 2.8rem;
+    animation: coinSpin 4s linear infinite;
+}
+
+@keyframes coinSpin {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.breakdown-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* شبكة العملات */
+.breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+/* كل عملة */
+.breakdown-currency {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 25px 20px;
+    text-align: center;
+    border: 3px solid rgba(255, 215, 0, 0.4);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    min-height: 320px;
+}
+
+.breakdown-currency:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: #E84393;
+    box-shadow: 0 20px 40px rgba(232, 67, 147, 0.25);
+}
+
+.currency-image-large[data-value="500"] {
+    background: url('500.jpeg') no-repeat center center !important;
+    background-size: contain !important;
+    border: 4px solid #FFD700 !important;
+    background-color: white !important;
+}
+
+/* 200 ليرة - إذا اسمها 200.jpeg */
+.currency-image-large[data-value="200"] {
+    background: url('200.jpeg') no-repeat center center !important;
+    background-size: contain !important;
+    border: 4px solid #27AE60 !important;
+    background-color: white !important;
+}
+
+/* 100 ليرة - إذا اسمها 100.jpeg */
+.currency-image-large[data-value="100"] {
+    background: url('100.jpeg') no-repeat center center !important;
+    background-size: contain !important;
+    border: 4px solid #E84393 !important;
+    background-color: white !important;
+}
+
+/* 50 ليرة - إذا اسمها 50.jpeg */
+.currency-image-large[data-value="50"] {
+    background: url('50.jpeg') no-repeat center center !important;
+    background-size: contain !important;
+    border: 4px solid #3498DB !important;
+    background-color: white !important;
+}
+
+/* 25 ليرة - إذا اسمها 25.jpeg */
+.currency-image-large[data-value="25"] {
+    background: url('25.jpeg') no-repeat center center !important;
+    background-size: contain !important;
+    border: 4px solid #9B59B6 !important;
+    background-color: white !important;
+}
+
+/* 10 ليرة - إذا اسمها 10.jpeg */
+.currency-image-large[data-value="10"] {
+    background: url('10.jpeg') no-repeat center center !important;
+    background-size: contain !important;
+    border: 4px solid #E74C3C !important;
+    background-color: white !important;
+}
+
+/* ===== إلغاء الخلفية القديمة ===== */
+.currency-image-large {
+    background: none !important;
+    /* إلغاء التدرج اللوني القديم */
+    width: 220px;
+    height: 130px;
+    margin: 0 auto 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* القيمة تظهر أسفل الصورة الآن */
+
+/* تفاصيل العملة - تحتها */
+.currency-details-large {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* قيمة العملة تظهر هنا - تحت الصورة */
+.currency-value-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #333;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    direction: rtl;
+}
+
+/* العدد المطلوب */
+.currency-count-large {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #27AE60;
+    margin-bottom: 15px;
+    direction: ltr;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* التفاصيل */
+.currency-desc {
+    font-size: 1.3rem;
+    color: #666;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* المجموع */
+.currency-total-large {
+    font-size: 1.6rem;
+    color: #E84393;
+    font-weight: 700;
+    margin-top: 15px;
+    background: rgba(232, 67, 147, 0.1);
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(232, 67, 147, 0.2);
+}
+
+/* الملخص */
+.breakdown-summary {
+    background: linear-gradient(135deg,
+            rgba(255, 107, 53, 0.1),
+            rgba(39, 174, 96, 0.1));
+    border-radius: 20px;
+    padding: 25px;
+    border: 3px solid rgba(255, 107, 53, 0.3);
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.summary-title {
+    color: #333;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.summary-title i {
+    color: #FF6B35;
+}
+
+.summary-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.summary-item {
+    text-align: center;
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    min-width: 200px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.summary-item h4 {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.summary-item .value {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #27AE60;
+    direction: ltr;
+}
+
+.summary-item .unit {
+    font-size: 1.1rem;
+    color: #888;
+    margin-top: 5px;
+}
+
+.result-container {
+    margin-top: 30px;
+    padding: 25px;
+    background: linear-gradient(135deg,
+            rgba(255, 215, 0, 0.2),
+            rgba(39, 174, 96, 0.2));
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(39, 174, 96, 0.2);
+}
+
+.result-container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.result-title {
+    font-size: 1.4rem;
+    color: #444;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.result-amount {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #f0ebe9;
+    /* لون برتقالي واضح */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    direction: ltr;
+    margin: 15px 0;
+}
+
+.result-text {
+    font-size: 1.4rem;
+    margin-top: 15px;
+    color: #444;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* النجوم المتلألئة */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background: radial-gradient(circle,
+            #FFD700,
+            #FF6B35,
+            transparent 70%);
+    border-radius: 50%;
+    animation: twinkle infinite alternate;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+@keyframes twinkle {
+    from {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* تأثيرات إضافية */
+.clicked {
+    animation: pulse 0.3s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* تحكمات الموسيقى */
+.music-controls {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.music-btn {
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg,
+            rgba(255, 107, 53, 0.8),
+            rgba(232, 67, 147, 0.8));
+    border: 2px solid rgba(255, 215, 0, 0.6);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+    flex: 1;
+    min-width: 180px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(232, 67, 147, 0.3);
+}
+
+.music-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(232, 67, 147, 0.5);
+    background: linear-gradient(135deg,
+            rgba(232, 67, 147, 0.9),
+            rgba(255, 107, 53, 0.9));
+}
+
+.music-btn:active {
+    transform: translateY(-1px);
+}
+
+#play-music {
+    background: linear-gradient(135deg,
+            rgba(39, 174, 96, 0.8),
+            rgba(46, 204, 113, 0.8));
+    border-color: rgba(39, 174, 96, 0.6);
+}
+
+#play-music:hover {
+    background: linear-gradient(135deg,
+            rgba(39, 174, 96, 0.9),
+            rgba(46, 204, 113, 0.9));
+    box-shadow: 0 10px 25px rgba(39, 174, 96, 0.4);
+}
+
+#stop-music {
+    background: linear-gradient(135deg,
+            rgba(231, 76, 60, 0.8),
+            rgba(192, 57, 43, 0.8));
+    border-color: rgba(231, 76, 60, 0.6);
+}
+
+#stop-music:hover {
+    background: linear-gradient(135deg,
+            rgba(231, 76, 60, 0.9),
+            rgba(192, 57, 43, 0.9));
+    box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
+}
+
+#pause-music {
+    background: linear-gradient(135deg,
+            rgba(52, 152, 219, 0.8),
+            rgba(41, 128, 185, 0.8));
+    border-color: rgba(52, 152, 219, 0.6);
+}
+
+#pause-music:hover {
+    background: linear-gradient(135deg,
+            rgba(52, 152, 219, 0.9),
+            rgba(41, 128, 185, 0.9));
+    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+}
+
+/* حالة الأغنية */
+.music-status {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(135deg,
+            rgba(255, 215, 0, 0.2),
+            rgba(232, 67, 147, 0.2));
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 600;
+    animation: fadeIn 0.8s ease;
+}
+
+.music-status i {
+    color: #FF6B35;
+    font-size: 1.3rem;
+    animation: musicIconPulse 2s infinite;
+}
+
+@keyframes musicIconPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* للجوال */
+@media (max-width: 992px) {
+    .breakdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .currency-image-large {
+        width: 180px;
+        height: 110px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.5rem;
+    }
+
+    .header p {
+        font-size: 1.1rem;
+        padding: 15px;
+    }
+
+    .converter-box {
+        padding: 25px;
+    }
+
+    .direction-selector {
+        flex-direction: column;
+    }
+
+    .direction-btn {
+        padding: 15px 20px;
+    }
+
+    .convert-btn {
+        padding: 18px;
+        font-size: 1.4rem;
+    }
+
+    .result-amount {
+        font-size: 3rem;
+    }
+
+    .breakdown-container {
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .breakdown-header h2 {
+        font-size: 2rem;
+    }
+
+    .breakdown-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .breakdown-currency {
+        min-height: 300px;
+    }
+
+    .currency-image-large {
+        width: 160px;
+        height: 100px;
+    }
+
+    .currency-count-large {
+        font-size: 2.5rem;
+    }
+
+    .summary-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .summary-item {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .music-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .music-btn {
+        width: 100%;
+        min-width: auto;
+        padding: 14px 20px;
+    }
+
+    .music-status {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
+/* ========== الفوتر - حقوق النشر ========== */
+.site-footer {
+    background: linear-gradient(135deg,
+            rgba(255, 107, 53, 0.2),
+            rgba(39, 174, 96, 0.2),
+            rgba(255, 215, 0, 0.1));
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 30px;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 50px;
+    border: 3px solid rgba(255, 215, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(39, 174, 96, 0.2);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.footer-section {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.footer-section h3 {
+    color: #333;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-section h3 i {
+    color: #FF6B35;
+    font-size: 1.5rem;
+}
+
+.footer-section p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+.footer-section strong {
+    color: #27AE60;
+    font-weight: 900;
+
+}
+
+.footer-bottom {
+    padding-top: 20px;
+    border-top: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.footer-bottom p {
+    color: #333;
+    font-size: 1.1rem;
+    margin: 10px 0;
+    font-weight: 600;
+}
+
+.footer-symbol {
+    font-size: 1.5rem !important;
+    margin-top: 15px !important;
+    letter-spacing: 10px;
+}
+
+/* تأثيرات خاصة للفوتير */
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 5px;
+    background: linear-gradient(90deg,
+            #FF6B35, #27AE60, #FFD700, #E84393);
+    border-radius: 5px;
+}
+
+/* للجوال */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .footer-section {
+        padding: 15px;
+    }
+
+    .footer-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .site-footer {
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .footer-symbol {
+        letter-spacing: 5px;
+    }
+}
+
+/* ========== توقيع متجاوب كامل ========== */
+.responsive-signature {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* ========== نسخة الديسكتوب (تظهر فقط للشاشات الكبيرة) ========== */
+.desktop-signature {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+/* العصفورة للديسكتوب */
+.signature-bird {
+    font-size: 1.8rem;
+    color: #E84393;
+    animation: birdFly 4s ease-in-out infinite;
+    margin-bottom: -5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes birdFly {
+
+    0%,
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+
+    25% {
+        transform: translateX(-5px) translateY(-2px);
+    }
+
+    50% {
+        transform: translateX(0) translateY(0);
+    }
+
+    75% {
+        transform: translateX(-3px) translateY(1px);
+    }
+}
+
+/* بطاقة التوقيع للديسكتوب */
+.signature-card {
+    background: linear-gradient(135deg,
+            rgba(232, 67, 147, 0.92),
+            rgba(253, 121, 168, 0.92));
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 15px 18px;
+    max-width: 280px;
+    box-shadow: 0 5px 20px rgba(232, 67, 147, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    animation: cardFloat 6s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-2px) rotate(0.5deg);
+    }
+
+    66% {
+        transform: translateY(1px) rotate(-0.5deg);
+    }
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: white;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.card-header i {
+    color: #131312;
+    font-size: 0.9rem;
+}
+
+.card-content {
+    text-align: center;
+}
+
+.designer-label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.75rem;
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.designer-name {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 5px 0;
+    text-shadow: 1px 1px 3px rgba(189, 157, 157, 0.3);
+    background: linear-gradient(#140010, #410025);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.2;
+}
+
+.signature-message {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.7rem;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+/* ========== نسخة الموبايل (تظهر فقط للشاشات الصغيرة) ========== */
+.mobile-signature {
+    display: none;
+    /* مخفي افتراضياً للديسكتوب */
+}
+
+.mobile-card {
+    background: rgba(232, 67, 147, 0.92);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 3px 10px rgba(232, 67, 147, 0.25);
+    animation: mobilePulse 4s ease-in-out infinite;
+}
+
+@keyframes mobilePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.95;
+    }
+
+    50% {
+        transform: scale(0.98);
+        opacity: 1;
+    }
+}
+
+.mobile-icon {
+    color: #FFD700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.mobile-text {
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+/* ========== استعلامات الوسائط للتجاوب ========== */
+
+/* للتابلت (شاشات متوسطة) */
+@media (max-width: 1024px) {
+    .signature-card {
+        max-width: 240px;
+        padding: 12px 15px;
+    }
+
+    .designer-name {
+        font-size: 1rem;
+    }
+
+    .card-header {
+        font-size: 0.8rem;
+    }
+}
+
+/* للشاشات الصغيرة (تلفونات أفقية) */
+@media (max-width: 768px) {
+    .responsive-signature {
+        top: 5px;
+        right: 5px;
+    }
+
+    .desktop-signature {
+        display: none;
+        /* نخفي نسخة الديسكتوب */
+    }
+
+    .mobile-signature {
+        display: block;
+        /* نظهر نسخة الموبايل */
+    }
+
+    .mobile-card {
+        padding: 6px 10px;
+    }
+
+    .mobile-text {
+        font-size: 0.7rem;
+        max-width: 150px;
+    }
+
+    .mobile-icon {
+        font-size: 0.7rem;
+    }
+}
+
+/* للشاشات الصغيرة جداً */
+@media (max-width: 480px) {
+    .mobile-card {
+        padding: 5px 8px;
+        border-radius: 8px;
+    }
+
+    .mobile-text {
+        font-size: 0.65rem;
+        max-width: 130px;
+    }
+
+    .mobile-icon {
+        font-size: 0.65rem;
+    }
+}
+
+/* للشاشات العمودية الصغيرة (مثل iPhone SE) */
+@media (max-width: 375px) and (max-height: 667px) {
+    .mobile-text {
+        font-size: 0.6rem;
+        max-width: 120px;
+    }
+
+    .mobile-card {
+        padding: 4px 6px;
+        gap: 5px;
+    }
+
+    .responsive-signature {
+        top: 3px;
+        right: 3px;
+    }
+}
+
+/* إخفاء التوقيع كلياً إذا المساحة ضيقة جداً */
+@media (max-width: 320px) {
+    .responsive-signature {
+        display: none;
+    }
+}
+
+/* إخفاء أزرار التشغيل والإيقاف */
+#play-music,
+#stop-music {
+    display: none !important;
+}
+
+/* التأكد من ظهور زر الإيقاف المؤقت فقط */
+.music-controls {
+    justify-content: center !important;
+}
+
+/* جعل زر الإيقاف المؤقت يظهر بوضوح */
+#pause-music {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}

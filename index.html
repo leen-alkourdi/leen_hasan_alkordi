@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>باباعمرو بوابة النصر</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* إخفاء أزرار التشغيل والإيقاف */
+        #play-music,
+        #stop-music {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- النجوم المتلألئة -->
+    <div class="stars" id="stars-container"></div>
+
+    <!-- رأس الصفحة -->
+    <div class="header">
+        <h1>باباعمرو بوابة النصر</h1>
+        <p>محول العملة بين الليرة السورية القديمة والجديدة</p>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="container">
+        <!-- صندوق التحويل -->
+        <div class="converter-box">
+            <div class="box-title">
+                <h2><i class="fas fa-syrian-pound-sign"></i> محول العملة السورية</h2>
+            </div>
+
+            <!-- إدخال المبلغ -->
+            <div class="currency-input">
+                <label for="amount">أدخل المبلغ المراد تحويله:</label>
+                <div class="input-group">
+                    <input type="text" id="amount" placeholder="أدخل المبلغ هنا...">
+                    <div class="currency-symbol" id="input-symbol">ليرة سورية قديمة</div>
+                </div>
+            </div>
+
+            <!-- اختيار نوع التحويل -->
+            <div class="direction-selector">
+                <button class="direction-btn active" id="old-to-new">
+                    <i class="fas fa-arrow-right"></i> قديم ← جديد
+                    <span class="conversion-rate">(÷ 100)</span>
+                </button>
+                <button class="direction-btn" id="new-to-old">
+                    <i class="fas fa-arrow-left"></i> جديد ← قديم
+                    <span class="conversion-rate">(× 100)</span>
+                </button>
+            </div>
+
+            <!-- زر التحويل -->
+            <button class="convert-btn" id="convert-btn">
+                <i class="fas fa-flag"></i> تحويل العملة
+            </button>
+
+            <!-- نتيجة التحويل -->
+            <div class="result-container" id="result-container">
+                <div class="result-title">المبلغ بعد التحويل:</div>
+                <div class="result-amount" id="result-amount">٠٫٠٠</div>
+                <div class="result-text" id="result-text">ليرة سورية جديدة</div>
+            </div>
+        </div> <!-- نهاية converter-box -->
+
+        <!-- ========== قسم توزيع العملات المنفصل الجديد ========== -->
+        <div class="breakdown-container" id="breakdown-container">
+            <div class="breakdown-header">
+                <h2><i class="fas fa-money-bill-wave"></i> توزيع العملة الجديدة</h2>
+                <p class="breakdown-subtitle">القطع المطلوبة لكل فئة من العملة السورية الجديدة</p>
+            </div>
+
+            <div class="breakdown-grid" id="breakdown-grid">
+                <!-- سيتم ملؤه بالجافاسكريبت -->
+            </div>
+
+            <div class="breakdown-summary" id="breakdown-summary">
+                <!-- سيتم ملؤه بالجافاسكريبت -->
+            </div>
+        </div>
+        <!-- ========== نهاية قسم التوزيع المنفصل ========== -->
+    </div> <!-- نهاية container -->
+
+    <!-- عناصر الصوت -->
+    <audio id="revolution-song" preload="auto">
+        <source src="VivaCut_video_1767724787281.m4a" type="audio/mpeg">
+    </audio>
+
+    <!-- تحكمات الموسيقى (فقط زر الإيقاف المؤقت) -->
+    <div class="music-controls">
+        <button class="music-btn" id="pause-music">
+            <i class="fas fa-pause"></i> وقف مؤقت
+        </button>
+
+        <!-- عرض حالة الأغنية -->
+        <div class="music-status" id="music-status">
+            <i class="fas fa-music"></i>
+            <span>الأغنية متوقفة</span>
+        </div>
+    </div>
+
+    <!-- توقيع المصممة -->
+    <div class="responsive-signature">
+        <!-- للشاشات الكبيرة (لابتوب، كمبيوتر) -->
+        <div class="desktop-signature">
+            <div class="signature-bird">
+                <i class="fas fa-dove"></i>
+            </div>
+            <div class="signature-card">
+                <div class="card-header">
+                    <span>هدية إلى أهل باباعمرو</span>
+                </div>
+                <div class="card-content">
+                    <p class="designer-label">تصميم وتطوير</p>
+                    <h3 class="designer-name">المهندسة لين حسن الكردي</h3>
+                    <p class="signature-message">بكل الحب والفخر</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- للشاشات الصغيرة (تلفونات) -->
+        <div class="mobile-signature">
+            <div class="mobile-card">
+                <i class="fas fa-heart mobile-icon"></i>
+                <span class="mobile-text">هدية من لين الكردي لأهل باباعمرو</span>
+                <i class="fas fa-heart mobile-icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- تذييل الصفحة -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-heart"></i> هدية إلى أهل باباعمرو</h3>
+                <p>هذا التطبيق هدية من القلب لأهل باباعمرو الأبطال، رمز الصمود والنصر في سوريا</p>
+            </div>
+
+            <div class="footer-section">
+                <h3><i class="fas fa-copyright"></i> حقوق النشر</h3>
+                <p>© 2026 - جميع الحقوق محفوظة</p>
+                <p>تم التصميم والبرمجة بواسطة <strong>المهندسة لين حسن الكردي</strong></p>
+            </div>
+
+            <div class="footer-section">
+                <h3><i class="fas fa-code"></i> عن الموقع</h3>
+                <p>محول العملة بين الليرة السورية القديمة والجديدة</p>
+                <p>باباعمرو بوابة النصر - 🇸🇾</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>صنع بكل حب | <span id="current-year">2026</span></p>
+            <p class="footer-symbol">✌️ ❤️ 🇸🇾</p>
+        </div>
+    </footer>
+
+    <script src="java.js"></script>
+</body>
+
+</html>
